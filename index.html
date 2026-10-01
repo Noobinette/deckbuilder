@@ -29,6 +29,18 @@
             overflow: hidden;
         }
 
+        /* Empêche la sélection et le glisser-déposer des images */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;
+            pointer-events: auto;
+            /* Garde le clic actif pour tes modals */
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text-color);
@@ -1927,7 +1939,8 @@
         const STORAGE_KEY_CHANGELOG_HIST = 'deckbuilder_changelog_history';
         const STORAGE_KEY_DECK_SIZE = 'deckbuilder_deck_size';
         const STORAGE_KEY_PLAN_SIZE = 'deckbuilder_plan_size';
-
+        // Désactive le clic droit sur toute la page
+        document.addEventListener('contextmenu', event => event.preventDefault());
         const TYPE_ORDER = ["lieu", "plan", "unité", "batiment", "bâtiment", "equipement", "équipement", "sort"];
 
         let targetDeckSize = parseInt(localStorage.getItem(STORAGE_KEY_DECK_SIZE)) || 40;
